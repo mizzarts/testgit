@@ -1,0 +1,22 @@
+//存数据到文件
+//String inputText可以是String inputText = edit.getText().toString();edit是自定义的EditText
+     private void save(String inputText) {
+        FileOutputStream out = null;
+        BufferedWriter writer = null;
+        try{
+            out=openFileOutput("data", Context.MODE_PRIVATE);
+            writer=new BufferedWriter(new OutputStreamWriter(out));
+            writer.write(inputText);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(writer != null){
+                    writer.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+        }
+
+    }
